@@ -59,8 +59,8 @@
 
 <script>
 import { ref, watch, reactive, computed } from "@vue/composition-api";
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
+// import Vue from "vue";
+// import VueCompositionAPI from "@vue/composition-api";
 import {
   BContainer,
   BRow,
@@ -71,6 +71,10 @@ import {
   BFormSelect,
   BFormInput,
 } from "bootstrap-vue";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
+
+// Vue.use(VueCompositionAPI);
 
 export default {
   name: "Table",

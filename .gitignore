@@ -5,10 +5,7 @@ test.js
 .nyc_output/
 
 .DS_Store
-/frontend/dist
 
-/frontend/tests/e2e/videos/
-/frontend/tests/e2e/screenshots/
 
 # local env files
 .env.local

@@ -1,10 +1,17 @@
-import MapComponent from './src/map/components/Map';
-import MapPopupComponent from './src/map/components/Popup';
-import TableComponent from './src/table/components/Table';
-import HelloWorldTestComponent from './src/HelloWorldTest';
+import MapComponent from "./src/components/map/components/Map";
+import MapPopupComponent from "./src/components/map/components/Popup";
+import TableComponent from "./src/components/table/components/Table";
 
-export const Map = MapComponent;
-export const MapPopup = MapPopupComponent;
-export const Table = TableComponent;
-export const HelloWorldTest = HelloWorldTestComponent;
+import FormSchema from "./src/services/FormSchema";
+import MappingFields from "./src/services/MappingFields";
 
+export default {
+  install(Vue) {
+    Vue.component("Map", MapComponent);
+    Vue.component("MapPopup", MapPopupComponent);
+    Vue.component("Table", TableComponent);
+  },
+};
+
+export const FormSchemaService = FormSchema;
+export const MappingFieldsService = MappingFields;

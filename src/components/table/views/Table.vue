@@ -16,7 +16,6 @@
       :selectable="true"
       :current-page="currentPage"
       :per-page="perPage"
-      :total-rows="totalRows"
       :tableOptions="tableOptions"
       @sort-changed="onSortChanged"
       @row-selected="handleEvent"
@@ -61,28 +60,28 @@
 </template>
 
 <script>
-require('ace-builds');
-require('ace-builds/webpack-resolver');
+require("ace-builds");
+require("ace-builds/webpack-resolver");
 
-import { ref, reactive } from '@vue/composition-api';
-import VueFormGenerator from 'vue-form-generator';
+import { ref, reactive } from "@vue/composition-api";
+import VueFormGenerator from "vue-form-generator";
 
-import Table from '../components/Table.vue';
+import Table from "../components/Table.vue";
 
-import MappingFieldsService from '../services/MappingFieldsService';
-import { formSchemaService } from '../services/formSchema';
+import MappingFieldsService from "../services/MappingFieldsService";
+import { formSchemaService } from "../services/formSchema";
 
-import Vue from 'vue';
-import JsonFormInput from '../components/JsonFormInput.vue';
-import DateTimeFormInput from '../components/DateTimeFormInput.vue';
-Vue.component('field-jsonFormInput', JsonFormInput);
-Vue.component('field-dateTimeFormInput', DateTimeFormInput);
+import Vue from "vue";
+import JsonFormInput from "../components/JsonFormInput.vue";
+import DateTimeFormInput from "../components/DateTimeFormInput.vue";
+Vue.component("field-jsonFormInput", JsonFormInput);
+Vue.component("field-dateTimeFormInput", DateTimeFormInput);
 
 export default {
-  name: 'TableView',
+  name: "TableView",
   components: {
     Table,
-    VueFormGenerator: VueFormGenerator.component
+    VueFormGenerator: VueFormGenerator.component,
   },
   setup(props, ctx) {
     const uid = Math.random().toString();
@@ -91,12 +90,12 @@ export default {
     let totalRows = ref(0);
     let currentPage = 1;
     let perPage = ref(1);
-    let filter = ref('');
+    let filter = ref("");
     let sort = ref(null);
     let formSchema = ref({});
     let fields = ref([]);
     let document = ref({});
-    let modalAction = ref('');
+    let modalAction = ref("");
     let tableOptions = ref({
       // set here all bootstrap table supported props
     });
@@ -108,10 +107,10 @@ export default {
           query: {
             multi_match: {
               query: filter.value,
-              type: 'phrase_prefix',
-              fields: ['*']
-            }
-          }
+              type: "phrase_prefix",
+              fields: ["*"],
+            },
+          },
         };
       }
       if (sort.value) {
@@ -119,16 +118,16 @@ export default {
       }
 
       ctx.root.$kuzzle.document
-        .search('tenant1', 'asset', query, {
+        .search("tenant1", "asset", query, {
           from: (currentPage - 1) * perPage.value,
-          size: perPage.value
+          size: perPage.value,
         })
-        .then(res => {
+        .then((res) => {
           items.splice(items, items.length);
           for (const doc of res.hits) {
             items.push({
               _id: doc._id,
-              ...doc._source
+              ...doc._source,
             });
           }
           totalRows.value = res.total;
@@ -138,15 +137,15 @@ export default {
           }
 
           ctx.root.$kuzzle.collection
-            .getMapping('tenant1', 'asset', {
-              includeKuzzleMeta: false
+            .getMapping("tenant1", "asset", {
+              includeKuzzleMeta: false,
             })
-            .then(mapping => {
+            .then((mapping) => {
               fields.value = mappingFieldsService.getFieldsForTable(mapping);
               fields.value.push({
-                key: 'actions',
-                label: 'Actions',
-                sortable: false
+                key: "actions",
+                label: "Actions",
+                sortable: false,
               });
               formSchema.value = formSchemaService.generate(
                 mapping.properties,
@@ -168,38 +167,38 @@ export default {
       formSchema,
       document,
       modalAction,
-      editRow: data => {
+      editRow: (data) => {
         document.value = JSON.parse(JSON.stringify(data.item));
-        modalAction.value = 'Edit';
+        modalAction.value = "Edit";
         ctx.root.$bvModal.show(uid);
       },
-      createRow: data => {
+      createRow: (data) => {
         document.value = {};
-        modalAction.value = 'Create';
+        modalAction.value = "Create";
         ctx.root.$bvModal.show(uid);
       },
-      modalHidden: async event => {
-        if (event.trigger === 'ok') {
+      modalHidden: async (event) => {
+        if (event.trigger === "ok") {
           if (document.value && document.value._id) {
             const id = document.value._id;
             delete document.value._id;
             await ctx.root.$kuzzle.document.update(
-              'tenant1',
-              'asset',
+              "tenant1",
+              "asset",
               id,
               document.value,
               {
-                refresh: 'wait_for'
+                refresh: "wait_for",
               }
             );
           } else {
             await ctx.root.$kuzzle.document.create(
-              'tenant1',
-              'asset',
+              "tenant1",
+              "asset",
               document.value,
-              '',
+              "",
               {
-                refresh: 'wait_for'
+                refresh: "wait_for",
               }
             );
           }
@@ -207,49 +206,49 @@ export default {
           fetchItems();
         }
       },
-      removeRow: data => {
-        ctx.root.$bvModal.msgBoxConfirm('Are you sure?').then(async value => {
+      removeRow: (data) => {
+        ctx.root.$bvModal.msgBoxConfirm("Are you sure?").then(async (value) => {
           if (value) {
             await ctx.root.$kuzzle.document.delete(
-              'tenant1',
-              'asset',
+              "tenant1",
+              "asset",
               data.item._id,
               {
-                refresh: 'wait_for'
+                refresh: "wait_for",
               }
             );
           }
           fetchItems();
         });
       },
-      handleEvent: data => {
+      handleEvent: (data) => {
         console.log(data);
       },
-      onPageChanged: page => {
+      onPageChanged: (page) => {
         currentPage = page;
         fetchItems();
       },
-      onPerPageChanged: value => {
+      onPerPageChanged: (value) => {
         perPage.value = value;
         currentPage = 1;
         fetchItems();
       },
-      onFilterChanged: receivedFilter => {
+      onFilterChanged: (receivedFilter) => {
         filter.value = receivedFilter;
         fetchItems();
       },
-      onSortChanged: data => {
+      onSortChanged: (data) => {
         sort.value = [
           {
             [data.sortBy]: {
-              order: data.sortDesc ? 'desc' : 'asc'
-            }
-          }
+              order: data.sortDesc ? "desc" : "asc",
+            },
+          },
         ];
         fetchItems();
-      }
+      },
     };
-  }
+  },
 };
 </script>
 
