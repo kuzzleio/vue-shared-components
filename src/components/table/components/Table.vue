@@ -29,10 +29,8 @@
             class="m-0 p-0"
             data-cy="table"
             v-bind="mergedOptions"
-            :selectable="selectable"
             :items="items"
             :fields="fields"
-            :no-local-sorting="true"
             @sort-changed="onSortChanged"
             @row-selected="onRowSelected"
           >
@@ -59,8 +57,6 @@
 
 <script>
 import { ref, watch, reactive, computed } from "@vue/composition-api";
-// import Vue from "vue";
-// import VueCompositionAPI from "@vue/composition-api";
 import {
   BContainer,
   BRow,
@@ -73,8 +69,6 @@ import {
 } from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
-
-// Vue.use(VueCompositionAPI);
 
 export default {
   name: "Table",
@@ -98,11 +92,6 @@ export default {
       required: true,
     },
     filterable: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    selectable: {
       type: Boolean,
       required: false,
       default: false,
@@ -142,9 +131,11 @@ export default {
       hover: true,
       bordered: true,
       small: true,
+      selectable: true,
       responsive: "sm",
       "no-sort-reset": true,
       "show-empty": true,
+      "no-local-sorting": true,
     };
 
     watch(_currentPage, (value) => {
