@@ -17,13 +17,8 @@
   },
   "homepage": "https://github.com/kuzzleio/vue-shared-components#readme",
   "dependencies": {
-    "@vue/cli-plugin-babel": "^3.12.1",
-    "@vue/cli-plugin-eslint": "^3.12.1",
-    "@vue/cli-service": "^3.12.1",
-    "@vue/eslint-config-prettier": "^6.0.0",
     "bootstrap-vue": "^2.21.2",
     "debounce": "^1.2.1",
-    "eslint-plugin-prettier": "^3.3.1",
     "flat": "^5.0.2",
     "leaflet.markercluster": "^1.5.0",
     "lodash": "^4.17.21",
@@ -31,5 +26,12 @@
     "sass-loader": "10.1.1",
     "vue2-leaflet": "^2.6.0",
     "vue2-leaflet-markercluster": "^3.1.0"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "^3.12.1",
+    "@vue/cli-plugin-babel": "^3.12.1",
+    "@vue/cli-plugin-eslint": "^3.12.1",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.3.1"
   }
 }
