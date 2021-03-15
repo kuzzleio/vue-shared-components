@@ -2,7 +2,7 @@
 
 ## Install
 
-`npm i https://github.com/kuzzleio/vue-shared-components`
+`npm i "git+ssh://git@github.com:kuzzleio/vue-shared-components.git"`
 
 In your main Vue.js entrypoint:
 
