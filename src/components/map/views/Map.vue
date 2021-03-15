@@ -19,46 +19,46 @@
 </template>
 
 <script>
-import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
-import L from 'leaflet';
-import Map from '@/components/Map.vue';
-import Popup from '@/components/Popup.vue';
-import { LMarker } from 'vue2-leaflet';
-import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster';
+import shadowUrl from "leaflet/dist/images/marker-shadow.png";
+import L from "leaflet";
+import Map from "@/components/Map.vue";
+import Popup from "@/components/Popup.vue";
+import { LMarker } from "vue2-leaflet";
+import Vue2LeafletMarkerCluster from "vue2-leaflet-markercluster";
 
 export default {
-  name: 'MapView',
+  name: "MapView",
   components: {
     Map,
     LMarker,
     Popup,
-    'v-marker-cluster': Vue2LeafletMarkerCluster
+    "v-marker-cluster": Vue2LeafletMarkerCluster,
   },
   setup() {
     const markers = [
       {
         id: 42,
-        name: 'Test',
+        name: "Test",
         location: {
           lat: 1,
-          lng: 1
+          lng: 1,
         },
         icon: new L.divIcon({
           html: '<i class="fa fa-map-marker fa-3x" style="color:red"></i>',
-          className: 'heartIcon',
+          className: "heartIcon",
           shadowUrl,
           iconSize: [20, 36],
           iconAnchor: [10, 36],
           popupAnchor: [1, -34],
-          interactive: true
-        })
-      }
+          interactive: true,
+        }),
+      },
     ];
 
     return {
-      markers
+      markers,
     };
-  }
+  },
 };
 </script>
 

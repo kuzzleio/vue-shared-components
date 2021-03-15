@@ -48,11 +48,41 @@ More info : https://bootstrap-vue.org/docs/components/table
 
 ### Map
 
-[...]
+```html
+<map>
+  <template v-slot:marker>
+    <v-marker-cluster ref="myCluster">
+      <l-marker
+        v-for="marker of markers"
+        :key="marker.id"
+        :name="marker.name"
+        v-bind:lat-lng="marker.location"
+        v-bind:options="{ id: marker.id }"
+        :icon="marker.icon"
+        :ref="marker.id"
+      >
+        <MapPopup>
+          <template v-slot:content>Your content here</template>
+        </MapPopup>
+      </l-marker>
+    </v-marker-cluster>
+  </template>
+</map>
+```
+
+More info : https://vue2-leaflet.netlify.app/quickstart/#usage
 
 ### MapPopup
 
-[...]
+```html
+<MapPopup :popupOptions="popupOptions">
+  <template v-slot:content>Your content here</template>
+</MapPopup>
+```
+
+| Name         | Type   | Description                                             |
+| :----------- | :----- | :------------------------------------------------------ |
+| popupOptions | Object | https://leafletjs.com/reference-1.7.1.html#popup-option |
 
 ## Services
 

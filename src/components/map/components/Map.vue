@@ -9,32 +9,35 @@
 </template>
 
 <script>
-import L from 'leaflet';
+import L from "leaflet";
 import {
   LMap,
   LTileLayer,
   LMarker,
   LCircle,
   LTooltip,
-  LControl
-} from 'vue2-leaflet';
-import 'leaflet/dist/leaflet.css';
-import iconUrl from 'leaflet/dist/images/marker-icon.png';
-import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
-import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster';
+  LControl,
+} from "vue2-leaflet";
+import "leaflet/dist/leaflet.css";
+import iconUrl from "leaflet/dist/images/marker-icon.png";
+import shadowUrl from "leaflet/dist/images/marker-shadow.png";
+import Vue2LeafletMarkerCluster from "vue2-leaflet-markercluster";
+import "leaflet.markercluster/dist/MarkerCluster.css";
+import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 
 export default {
-  name: 'Map',
+  name: "Map",
   components: {
     LMap,
-    LTileLayer
+    LTileLayer,
   },
   setup() {
     return {
-      url: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
-      attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+      url: "https://{s}.tile.osm.org/{z}/{x}/{y}.png",
+      attribution:
+        '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors',
     };
-  }
+  },
 };
 </script>
 
