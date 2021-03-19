@@ -9,23 +9,6 @@
   />
 </template>
 
-<style lang="scss" rel="stylesheet/scss">
-.ace_text-input {
-  position: relative;
-}
-
-.ace-tomorrow.ace_editor.readonly {
-  background-color: #d6d6d6;
-  .ace_gutter,
-  .ace_active-line {
-    background-color: #d6d6d6;
-  }
-  .ace_selection {
-    background: #a7c4de;
-  }
-}
-</style>
-
 <script>
 import Vue from 'vue';
 
@@ -101,3 +84,20 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" rel="stylesheet/scss">
+.ace_text-input {
+  position: relative;
+}
+
+.ace-tomorrow.ace_editor.readonly {
+  background-color: #d6d6d6;
+  .ace_gutter,
+  .ace_active-line {
+    background-color: #d6d6d6;
+  }
+  .ace_selection {
+    background: #a7c4de;
+  }
+}
+</style>
