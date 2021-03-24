@@ -4,9 +4,8 @@ import Home from './views/Home.vue';
 import DefaultContainer from '@/views/DefaultContainer.vue';
 import PageNotFound from '@/views/404.vue';
 
-import Table from '@/sharedComponents/table/views/Table' 
-import Map from '@/sharedComponents/map/views/Map' 
-
+import Table from '@/sharedComponents/table/views/Table';
+import Map from '@/sharedComponents/map/views/Map';
 
 Vue.use(Router);
 

@@ -1,0 +1,11 @@
+name: ESLint
+description: Run ESLint
+runs:
+  using: "composite"
+  steps:
+    - name: Run ESLint
+      shell: bash
+      run: |
+           cd VueProject
+           npm install
+           npm run lint
