@@ -1,18 +1,148 @@
 {
-  "cypress": {
-    "e2e": {
+  "tenant1": {
+    "asset": {
       "dynamic": false,
       "properties": {
-        "firstname": {
-          "type": "text",
-          "fielddata": true
+        "measures": {
+          "properties": {
+            "movement": {
+              "dynamic": "false",
+              "properties": {
+                "id": {
+                  "type": "keyword"
+                },
+                "model": {
+                  "type": "keyword"
+                },
+                "moving": {
+                  "type": "boolean"
+                },
+                "payloadUuid": {
+                  "type": "keyword"
+                },
+                "qos": {
+                  "properties": {
+                    "battery": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "reference": {
+                  "type": "keyword"
+                },
+                "updatedAt": {
+                  "type": "date"
+                }
+              }
+            },
+            "position": {
+              "dynamic": "false",
+              "properties": {
+                "accuracy": {
+                  "type": "integer"
+                },
+                "altitude": {
+                  "type": "float"
+                },
+                "id": {
+                  "type": "keyword"
+                },
+                "model": {
+                  "type": "keyword"
+                },
+                "moving": {
+                  "type": "boolean"
+                },
+                "payloadUuid": {
+                  "type": "keyword"
+                },
+                "point": {
+                  "type": "geo_point"
+                },
+                "qos": {
+                  "properties": {
+                    "battery": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "reference": {
+                  "type": "keyword"
+                },
+                "updatedAt": {
+                  "type": "date"
+                }
+              }
+            },
+            "temperature": {
+              "dynamic": "false",
+              "properties": {
+                "degree": {
+                  "type": "float"
+                },
+                "id": {
+                  "type": "keyword"
+                },
+                "model": {
+                  "type": "keyword"
+                },
+                "payloadUuid": {
+                  "type": "keyword"
+                },
+                "qos": {
+                  "properties": {
+                    "battery": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "reference": {
+                  "type": "keyword"
+                },
+                "updatedAt": {
+                  "type": "date"
+                },
+                "value": {
+                  "type": "float"
+                }
+              }
+            }
+          }
         },
-        "lastname": {
-          "type": "text",
-          "fielddata": true
+        "metadata": {
+          "dynamic": "false",
+          "properties": {
+            "designation": {
+              "type": "keyword"
+            },
+            "lastPlatformId": {
+              "type": "keyword"
+            },
+            "owner": {
+              "type": "keyword"
+            },
+            "platformId": {
+              "type": "keyword"
+            },
+            "purchaseDate": {
+              "type": "date"
+            },
+            "serial": {
+              "type": "keyword"
+            },
+            "state": {
+              "type": "keyword"
+            }
+          }
         },
-        "age": {
-          "type": "integer"
+        "model": {
+          "type": "keyword"
+        },
+        "reference": {
+          "type": "keyword"
+        },
+        "type": {
+          "type": "keyword"
         }
       }
     }

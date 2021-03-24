@@ -1,25 +1,95 @@
 {
-  "cypress": {
-    "e2e": [
+  "tenant1": {
+    "asset": [
       {
         "index": {
-          "_id": "01"
+          "_id": "caisse-mobile_GEOSECUR_OCM07"
         }
       },
       {
-        "firstname": "Agent",
-        "lastname": "Smith",
-        "age": 42
-      },
-      {
-        "index": {
-          "_id": "02"
+        "metadata": {
+          "platformId": null,
+          "owner": "laposte",
+          "designation": "OCM07",
+          "state": "parking",
+          "lastPlatformId": null
+        },
+        "model": "GEOSECUR",
+        "reference": "OCM07",
+        "type": "caisse-mobile",
+        "measures": {
+          "position": {
+            "reference": "70b3d53260002c98",
+            "qos": {
+              "battery": 87
+            },
+            "payloadUuid": "8f397dfc-a5c9-4328-9d43-07af1dfd19da",
+            "accuracy": 5000,
+            "model": "StimioSpot",
+            "id": "StimioSpot_70b3d53260002c98",
+            "point": {
+              "lon": -1.5182475749643132,
+              "lat": 47.283972579498354
+            },
+            "updatedAt": 1616577410115
+          },
+          "movement": {
+            "reference": "70b3d53260002c98",
+            "qos": {
+              "battery": 87
+            },
+            "payloadUuid": "8f397dfc-a5c9-4328-9d43-07af1dfd19da",
+            "model": "StimioSpot",
+            "id": "StimioSpot_70b3d53260002c98",
+            "moving": false,
+            "updatedAt": 1616577410115
+          }
         }
       },
       {
-        "firstname": "Choosen",
-        "lastname": "One",
-        "age": 31
+        "index": {
+          "_id": "caisse-mobile_GEOSECUR_OCM11"
+        }
+      },
+      {
+        "metadata": {
+          "platformId": null,
+          "owner": "laposte",
+          "designation": "OCM11",
+          "state": "parking",
+          "lastPlatformId": null
+        },
+        "model": "GEOSECUR",
+        "reference": "OCM11",
+        "type": "caisse-mobile",
+        "measures": {
+          "position": {
+            "reference": "70b3d53260002cc2",
+            "qos": {
+              "battery": 84
+            },
+            "payloadUuid": "54c30ce7-ab1f-42d6-bdda-a412737dee52",
+            "accuracy": 1500,
+            "model": "StimioSpot",
+            "id": "StimioSpot_70b3d53260002cc2",
+            "point": {
+              "lon": 2.0397618350401667,
+              "lat": 48.79046921142255
+            },
+            "updatedAt": 1616577520422
+          },
+          "movement": {
+            "reference": "70b3d53260002cc2",
+            "qos": {
+              "battery": 84
+            },
+            "payloadUuid": "54c30ce7-ab1f-42d6-bdda-a412737dee52",
+            "model": "StimioSpot",
+            "id": "StimioSpot_70b3d53260002cc2",
+            "moving": false,
+            "updatedAt": 1616577520422
+          }
+        }
       }
     ]
   }

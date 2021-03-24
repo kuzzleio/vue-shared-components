@@ -28,8 +28,5 @@ yarn-error.log*
 *.sln
 *.sw*
 
-package-lock.json
-
-frontend/package-lock.json
-frontend/tests/cypress/screenshots
-frontend/tests/cypress/videos
+tests/cypress/screenshots
+tests/cypress/videos
