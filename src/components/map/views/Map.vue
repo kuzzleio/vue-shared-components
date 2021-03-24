@@ -4,6 +4,7 @@
       <v-marker-cluster ref="myCluster">
         <l-marker
           v-for="marker of markers"
+          data-cy="marker"
           :key="marker.id"
           :name="marker.name"
           v-bind:lat-lng="marker.location"
@@ -11,7 +12,11 @@
           :icon="marker.icon"
           :ref="marker.id"
         >
-          <Popup />
+          <Popup>
+            <template slot="content">
+              <p data-cy="popup-content">test popup</p>
+            </template>
+          </Popup>
         </l-marker>
       </v-marker-cluster>
     </template>

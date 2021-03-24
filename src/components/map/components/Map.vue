@@ -1,5 +1,5 @@
 <template>
-  <div class="Map">
+  <div class="Map" data-cy="map">
     <l-map ref="map">
       <l-tile-layer :url="url" :attribution="attribution" />
       <slot name="marker"></slot>
@@ -12,16 +12,9 @@
 import L from "leaflet";
 import {
   LMap,
-  LTileLayer,
-  LMarker,
-  LCircle,
-  LTooltip,
-  LControl,
+  LTileLayer
 } from "vue2-leaflet";
 import "leaflet/dist/leaflet.css";
-import iconUrl from "leaflet/dist/images/marker-icon.png";
-import shadowUrl from "leaflet/dist/images/marker-shadow.png";
-import Vue2LeafletMarkerCluster from "vue2-leaflet-markercluster";
 import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 
