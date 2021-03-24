@@ -8,4 +8,6 @@ runs:
       run: |
         cd VueProject
         npm install
+        npm run build
+        npx http-server ./dist
         npm run test

@@ -30,3 +30,4 @@ yarn-error.log*
 
 tests/cypress/screenshots
 tests/cypress/videos
+dist
