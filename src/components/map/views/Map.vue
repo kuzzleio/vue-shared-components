@@ -21,8 +21,8 @@
 <script>
 import shadowUrl from "leaflet/dist/images/marker-shadow.png";
 import L from "leaflet";
-import Map from "@/components/Map.vue";
-import Popup from "@/components/Popup.vue";
+import Map from "../components/Map.vue";
+import Popup from "../components/Popup.vue";
 import { LMarker } from "vue2-leaflet";
 import Vue2LeafletMarkerCluster from "vue2-leaflet-markercluster";
 

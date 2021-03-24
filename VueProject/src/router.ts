@@ -1,44 +1,38 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
-import Login from '@/views/Login.vue';
 import DefaultContainer from '@/views/DefaultContainer.vue';
 import PageNotFound from '@/views/404.vue';
+
+import Table from '@/sharedComponents/table/views/Table' 
+import Map from '@/sharedComponents/map/views/Map' 
+
 
 Vue.use(Router);
 
 export const createRouter = (kuzzle: any, store: any) => {
-  const authenticationGuard = async (to: any, from: any, next: any) => {
-    try {
-      if (await store.dispatch('auth/CHECK_TOKEN', kuzzle)) {
-        next();
-      } else {
-        next({ name: 'login', query: { to: to.name } });
-      }
-    } catch (error) {
-      console.error(error.message);
-      next({ name: 'login', query: { to: to.name } });
-    }
-  };
-
   const router = new Router({
     mode: 'history',
     base: process.env.BASE_URL,
     routes: [
       {
-        path: '/login',
-        name: 'login',
-        component: Login
-      },
-      {
         path: '/',
-        beforeEnter: authenticationGuard,
         component: DefaultContainer,
         children: [
           {
             path: '/',
             name: 'home',
             component: Home
+          },
+          {
+            path: 'table',
+            name: 'table',
+            component: Table
+          },
+          {
+            path: 'map',
+            name: 'map',
+            component: Map
           }
         ]
       },

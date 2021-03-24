@@ -68,8 +68,8 @@ import VueFormGenerator from "vue-form-generator";
 
 import Table from "../components/Table.vue";
 
-import MappingFieldsService from "../services/MappingFieldsService";
-import { formSchemaService } from "../services/formSchema";
+import MappingFields from "@/services/MappingFields";
+import { formSchemaService } from "@/services/FormSchema";
 
 import Vue from "vue";
 import JsonFormInput from "../components/JsonFormInput.vue";
@@ -85,7 +85,7 @@ export default {
   },
   setup(props, ctx) {
     const uid = Math.random().toString();
-    const mappingFieldsService = new MappingFieldsService();
+    const mappingFieldsService = new MappingFields();
     const items = reactive([]);
     let totalRows = ref(0);
     let currentPage = 1;
