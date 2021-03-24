@@ -9,5 +9,5 @@ runs:
         cd VueProject
         npm install
         npm run build
-        npx http-server ./dist
+        npx http-server ./dist &
         npm run test
