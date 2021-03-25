@@ -1,0 +1,13 @@
+name: Functional Tests
+description: Run Functional Tests
+runs:
+  using: "composite"
+  steps:
+    - name: Run functional test
+      shell: bash
+      run: |
+        cd VueProject
+        npm install
+        npm run build
+        npx http-server ./dist --proxy http://localhost:8080? &
+        npm run test

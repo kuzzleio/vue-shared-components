@@ -16,6 +16,7 @@
       :selectable="true"
       :current-page="currentPage"
       :per-page="perPage"
+      :total-rows="totalRows"
       :tableOptions="tableOptions"
       @sort-changed="onSortChanged"
       @row-selected="handleEvent"
@@ -29,7 +30,6 @@
             href="#"
             @click.prevent="editRow(data)"
             class="text-primary"
-            v-b-tooltip.hover
             title="Edit"
           >
             <i class="pointer fa fa-pen" /> </a
@@ -38,7 +38,6 @@
             href="#"
             @click.prevent="removeRow(data)"
             class="text-danger"
-            v-b-tooltip.hover
             title="Delete"
           >
             <i class="pointer fa fa-trash" />
@@ -68,8 +67,8 @@ import VueFormGenerator from "vue-form-generator";
 
 import Table from "../components/Table.vue";
 
-import MappingFieldsService from "../services/MappingFieldsService";
-import { formSchemaService } from "../services/formSchema";
+import MappingFields from "@/services/MappingFields";
+import FormSchemaService  from "@/services/FormSchema";
 
 import Vue from "vue";
 import JsonFormInput from "../components/JsonFormInput.vue";
@@ -85,11 +84,12 @@ export default {
   },
   setup(props, ctx) {
     const uid = Math.random().toString();
-    const mappingFieldsService = new MappingFieldsService();
+    const mappingFieldsService = new MappingFields();
+    const formSchemaService = new FormSchemaService();
     const items = reactive([]);
     let totalRows = ref(0);
     let currentPage = 1;
-    let perPage = ref(1);
+    let perPage = ref(10);
     let filter = ref("");
     let sort = ref(null);
     let formSchema = ref({});
@@ -97,6 +97,7 @@ export default {
     let document = ref({});
     let modalAction = ref("");
     let tableOptions = ref({
+      "head-variant" :"dark"
       // set here all bootstrap table supported props
     });
 
@@ -167,6 +168,7 @@ export default {
       formSchema,
       document,
       modalAction,
+      tableOptions,
       editRow: (data) => {
         document.value = JSON.parse(JSON.stringify(data.item));
         modalAction.value = "Edit";

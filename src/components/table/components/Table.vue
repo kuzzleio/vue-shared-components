@@ -5,6 +5,7 @@
         <b-form-input
           v-if="filterable"
           v-model="filter"
+          data-cy="table-text-filter"
           type="search"
           placeholder="Type to Filter"
           @input="onFiltered"
@@ -15,6 +16,7 @@
           <b-form-select
             v-model="_perPage"
             id="perPageSelect"
+            data-cy="table-pagination-selector"
             :options="pageOptions"
             @change="onPerPageChanged"
           ></b-form-select>

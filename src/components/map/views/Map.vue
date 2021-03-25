@@ -4,6 +4,7 @@
       <v-marker-cluster ref="myCluster">
         <l-marker
           v-for="marker of markers"
+          data-cy="marker"
           :key="marker.id"
           :name="marker.name"
           v-bind:lat-lng="marker.location"
@@ -11,7 +12,11 @@
           :icon="marker.icon"
           :ref="marker.id"
         >
-          <Popup />
+          <Popup>
+            <template slot="content">
+              <p data-cy="popup-content">test popup</p>
+            </template>
+          </Popup>
         </l-marker>
       </v-marker-cluster>
     </template>
@@ -21,8 +26,8 @@
 <script>
 import shadowUrl from "leaflet/dist/images/marker-shadow.png";
 import L from "leaflet";
-import Map from "@/components/Map.vue";
-import Popup from "@/components/Popup.vue";
+import Map from "../components/Map.vue";
+import Popup from "../components/Popup.vue";
 import { LMarker } from "vue2-leaflet";
 import Vue2LeafletMarkerCluster from "vue2-leaflet-markercluster";
 
