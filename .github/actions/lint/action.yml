@@ -8,4 +8,4 @@ runs:
       run: |
            cd VueProject
            npm install
-           npm run lint
+           npm run test:lint
