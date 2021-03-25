@@ -1,5 +1,5 @@
-describe('Map tests', function() {
-    it('should access map view', function() {
+describe('Form tests', function() {
+    it('should access form view', function() {
       cy.visit('/form');
     });
 
