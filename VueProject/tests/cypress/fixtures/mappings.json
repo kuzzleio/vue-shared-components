@@ -135,6 +135,18 @@
             }
           }
         },
+        "startDate": {
+          "type": "date"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "text"
+        },
+        "price": {
+          "type": "integer"
+        },
         "model": {
           "type": "keyword"
         },

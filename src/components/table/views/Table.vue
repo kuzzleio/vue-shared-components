@@ -50,11 +50,6 @@
         </h4>
       </template>
     </Table>
-
-    <b-modal :id="uid" :title="modalAction" @hide="modalHidden">
-      <vue-form-generator :schema="formSchema" :model="document">
-      </vue-form-generator>
-    </b-modal>
   </b-container>
 </template>
 
@@ -63,24 +58,16 @@ require("ace-builds");
 require("ace-builds/webpack-resolver");
 
 import { ref, reactive } from "@vue/composition-api";
-import VueFormGenerator from "vue-form-generator";
 
 import Table from "../components/Table.vue";
 
 import MappingFields from "@/services/MappingFields";
 import FormSchemaService  from "@/services/FormSchema";
 
-import Vue from "vue";
-import JsonFormInput from "../components/JsonFormInput.vue";
-import DateTimeFormInput from "../components/DateTimeFormInput.vue";
-Vue.component("field-jsonFormInput", JsonFormInput);
-Vue.component("field-dateTimeFormInput", DateTimeFormInput);
-
 export default {
   name: "TableView",
   components: {
     Table,
-    VueFormGenerator: VueFormGenerator.component,
   },
   setup(props, ctx) {
     const uid = Math.random().toString();
@@ -95,7 +82,6 @@ export default {
     let formSchema = ref({});
     let fields = ref([]);
     let document = ref({});
-    let modalAction = ref("");
     let tableOptions = ref({
       "head-variant" :"dark"
       // set here all bootstrap table supported props
@@ -167,46 +153,12 @@ export default {
       fields,
       formSchema,
       document,
-      modalAction,
       tableOptions,
       editRow: (data) => {
         document.value = JSON.parse(JSON.stringify(data.item));
-        modalAction.value = "Edit";
-        ctx.root.$bvModal.show(uid);
       },
       createRow: (data) => {
         document.value = {};
-        modalAction.value = "Create";
-        ctx.root.$bvModal.show(uid);
-      },
-      modalHidden: async (event) => {
-        if (event.trigger === "ok") {
-          if (document.value && document.value._id) {
-            const id = document.value._id;
-            delete document.value._id;
-            await ctx.root.$kuzzle.document.update(
-              "tenant1",
-              "asset",
-              id,
-              document.value,
-              {
-                refresh: "wait_for",
-              }
-            );
-          } else {
-            await ctx.root.$kuzzle.document.create(
-              "tenant1",
-              "asset",
-              document.value,
-              "",
-              {
-                refresh: "wait_for",
-              }
-            );
-          }
-
-          fetchItems();
-        }
       },
       removeRow: (data) => {
         ctx.root.$bvModal.msgBoxConfirm("Are you sure?").then(async (value) => {

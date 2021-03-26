@@ -6,6 +6,7 @@ import PageNotFound from '@/views/404.vue';
 
 import Table from '@/sharedComponents/table/views/Table.vue';
 import Map from '@/sharedComponents/map/views/Map.vue';
+import Form from '@/sharedComponents/form/views/Form.vue';
 
 Vue.use(Router);
 
@@ -32,6 +33,11 @@ export const createRouter = (kuzzle: any, store: any) => {
             path: 'map',
             name: 'map',
             component: Map
+          },
+          {
+            path: 'form',
+            name: 'form',
+            component: Form
           }
         ]
       },
