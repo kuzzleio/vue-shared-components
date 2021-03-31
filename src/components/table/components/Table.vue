@@ -59,31 +59,9 @@
 
 <script>
 import { ref, watch, reactive, computed } from "@vue/composition-api";
-import {
-  BContainer,
-  BRow,
-  BCol,
-  BPagination,
-  BTable,
-  BInputGroup,
-  BFormSelect,
-  BFormInput,
-} from "bootstrap-vue";
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
 
 export default {
   name: "Table",
-  components: {
-    BContainer,
-    BRow,
-    BCol,
-    BPagination,
-    BTable,
-    BInputGroup,
-    BFormSelect,
-    BFormInput,
-  },
   props: {
     items: {
       type: Array,
