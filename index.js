@@ -17,7 +17,7 @@ export default {
     Vue.component("MapPopup", MapPopupComponent);
     Vue.component("Table", TableComponent);
     Vue.component("Form", FormComponent);
-    Vue.component("JsonEditor", JsonEditor);
+    Vue.component("JsonEditor", JsonEditorComponent);
     Vue.component("JsonFormInput", JsonFormInputComponent);
     Vue.component("DateTimeFormInput", DateTimeFormInputComponent);
   },
