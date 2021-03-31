@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/kuzzleio/vue-shared-components#readme",
   "dependencies": {
-    "bootstrap-vue": "^2.21.2",
     "debounce": "^1.2.1",
     "flat": "^5.0.2",
     "leaflet.markercluster": "^1.5.0",
