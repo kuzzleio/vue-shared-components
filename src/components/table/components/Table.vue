@@ -1,5 +1,5 @@
 <template>
-  <b-container>
+  <b-container fluid>
     <b-row class="mb-1">
       <b-col cols="9">
         <b-form-input
@@ -26,7 +26,7 @@
 
     <b-row>
       <b-col cols="12">
-        <b-container class="overflow-auto p-0 m-0">
+        <b-container class="overflow-auto p-0 m-0" fluid>
           <b-table
             class="m-0 p-0"
             data-cy="table"
