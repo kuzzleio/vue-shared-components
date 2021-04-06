@@ -117,8 +117,9 @@ export default {
       borderless: true,
       "no-border-collapse": true,
       "no-sort-reset": true,
-      "show-empty": true,
       "no-local-sorting": true,
+      "show-empty": true,
+      "sort-icon-left": true,
     };
 
     watch(_currentPage, (value) => {
