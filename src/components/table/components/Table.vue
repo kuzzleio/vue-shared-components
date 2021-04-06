@@ -2,14 +2,15 @@
   <b-container fluid>
     <b-row class="mb-1">
       <b-col cols="9">
-        <b-form-input
-          v-if="filterable"
-          v-model="filter"
-          data-cy="table-text-filter"
-          type="search"
-          placeholder="Type to Filter"
-          @input="onFiltered"
-        ></b-form-input>
+        <b-input-group prepend="Search" v-if="filterable">
+          <b-form-input
+            v-model="filter"
+            data-cy="table-text-filter"
+            type="search"
+            placeholder="Type to Filter"
+            @input="onFiltered"
+          ></b-form-input>
+        </b-input-group>
       </b-col>
       <b-col cols="3">
         <b-input-group prepend="Per page">
@@ -111,8 +112,10 @@ export default {
       hover: true,
       bordered: true,
       small: true,
-      selectable: true,
+      selectable: false,
       responsive: "sm",
+      borderless: true,
+      "no-border-collapse": true,
       "no-sort-reset": true,
       "show-empty": true,
       "no-local-sorting": true,
