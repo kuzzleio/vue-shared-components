@@ -1,10 +1,8 @@
 <template>
-    <vue-form-generator :schema="formSchema" :model="document">
-    </vue-form-generator>
+  <vue-form-generator :schema="formSchema" :model="model"> </vue-form-generator>
 </template>
 
 <script>
-import { ref, reactive } from "@vue/composition-api";
 import VueFormGenerator from "vue-form-generator";
 
 import Vue from "vue";
@@ -18,20 +16,18 @@ export default {
   components: {
     VueFormGenerator: VueFormGenerator.component,
   },
-   props: {
+  props: {
     formSchema: {
       type: Object,
       required: true,
-    }
-   },
-  setup(props, ctx) {
-    let document = ref({});
-    return {
-      document
-    };
+    },
+    model: {
+      type: Object,
+      required: false,
+      default: () => {},
+    },
   },
 };
 </script>
 
-<style lang="sass" scoped>
-</style>
+<style lang="sass" scoped></style>
