@@ -29,6 +29,7 @@
       <b-col cols="12">
         <b-container class="overflow-auto p-0 m-0" fluid>
           <b-table
+            :sticky-header="stickyHeader"
             class="m-0 p-0"
             data-cy="table"
             v-bind="mergedOptions"
@@ -102,6 +103,11 @@ export default {
       required: false,
       default: () => {},
     },
+    stickyHeader: {
+      type: Boolean,
+      required: false,
+      default: true
+    }
   },
   setup(props, { emit }) {
     let _currentPage = ref(props.currentPage);
