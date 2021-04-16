@@ -106,7 +106,7 @@ export default {
     stickyHeader: {
       type: Boolean,
       required: false,
-      default: false
+      default: true
     }
   },
   setup(props, { emit }) {
