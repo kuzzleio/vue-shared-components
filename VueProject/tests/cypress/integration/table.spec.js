@@ -21,4 +21,9 @@ describe('Table tests', function() {
     cy.visit('/table');
     cy.get("thead").should("have.class", "thead-dark")
   });
+
+  it('should be able to add customcontent in customFilter slot', function() {
+    cy.visit('/table');
+    cy.get('[data-cy="table-custom-filter"')
+  });
 });
