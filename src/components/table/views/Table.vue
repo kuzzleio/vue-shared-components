@@ -24,6 +24,11 @@
       @page-changed="onPageChanged"
       @per-page-changed="onPerPageChanged"
     >
+     <template v-slot:customFilter>
+        <b-col cols="4">
+         <span data-cy="table-custom-filter"> CustomFilter</span>
+        </b-col>
+      </template>
       <template v-slot:cell(actions)="data">
         <div class="text-center">
           <a

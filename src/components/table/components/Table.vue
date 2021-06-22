@@ -1,8 +1,9 @@
 <template>
   <b-container fluid>
-    <b-row class="mb-1">
-      <b-col cols="9">
-        <b-input-group prepend="Search" v-if="filterable">
+    <b-row no-gutters class="mb-1" align-h="end">
+      <slot name="customFilter" />
+      <b-col :class="{'pl-1': $slots.customFilter}" v-if="filterable">
+        <b-input-group prepend="Search">
           <b-form-input
             v-model="filter"
             data-cy="table-text-filter"
@@ -12,7 +13,7 @@
           ></b-form-input>
         </b-input-group>
       </b-col>
-      <b-col cols="3">
+      <b-col cols="3" class="perPageCol pl-1">
         <b-input-group prepend="Per page">
           <b-form-select
             v-model="_perPage"
@@ -106,8 +107,8 @@ export default {
     stickyHeader: {
       type: Boolean,
       required: false,
-      default: true
-    }
+      default: true,
+    },
   },
   setup(props, { emit }) {
     let _currentPage = ref(props.currentPage);
@@ -157,3 +158,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.perPageCol {
+  min-width: 160px;
+}
+</style>
