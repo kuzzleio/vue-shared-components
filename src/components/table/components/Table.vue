@@ -1,9 +1,9 @@
 <template>
   <b-container fluid>
-    <b-row class="mb-1">
-      <b-col cols="9">
+      <div class="d-flex flex-row mb-1">
         <b-input-group prepend="Search" v-if="filterable">
           <b-form-input
+            class="flex-grow-1 mr-1"
             v-model="filter"
             data-cy="table-text-filter"
             type="search"
@@ -11,19 +11,16 @@
             @input="onFiltered"
           ></b-form-input>
         </b-input-group>
-      </b-col>
-      <b-col cols="3">
-        <b-input-group prepend="Per page">
+
+        <b-input-group class="perPageSelect" prepend="Per page">
           <b-form-select
             v-model="_perPage"
-            id="perPageSelect"
             data-cy="table-pagination-selector"
             :options="pageOptions"
             @change="onPerPageChanged"
           ></b-form-select>
         </b-input-group>
-      </b-col>
-    </b-row>
+      </div>
 
     <b-row>
       <b-col cols="12">
@@ -91,7 +88,7 @@ export default {
     pageOptions: {
       type: Array,
       required: false,
-      default: () => [1, 10, 15, 100],
+      default: () => [10, 40, 60, 100],
     },
     totalRows: {
       type: Number,
@@ -157,3 +154,8 @@ export default {
   },
 };
 </script>
+
+<style lang="sass" scoped>
+.perPageSelect
+  width: 245px
+</style>
