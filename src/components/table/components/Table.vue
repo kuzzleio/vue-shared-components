@@ -1,17 +1,17 @@
 <template>
   <b-container fluid>
       <div class="d-flex flex-row mb-1">
-        <b-input-group prepend="Search" v-if="filterable">
-          <b-form-input
-            class="flex-grow-1 mr-1"
-            v-model="filter"
-            data-cy="table-text-filter"
-            type="search"
-            placeholder="Type to Filter"
-            @input="onFiltered"
-          ></b-form-input>
-        </b-input-group>
-
+        <div class="flex-grow-1 mr-1">
+          <b-input-group prepend="Search" v-if="filterable" >
+            <b-form-input
+              v-model="filter"
+              data-cy="table-text-filter"
+              type="search"
+              placeholder="Type to Filter"
+              @input="onFiltered"
+            ></b-form-input>
+          </b-input-group>
+        </div>
         <b-input-group class="perPageSelect" prepend="Per page">
           <b-form-select
             v-model="_perPage"
