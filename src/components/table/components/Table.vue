@@ -1,58 +1,62 @@
 <template>
-  <b-container fluid>
-      <div class="d-flex flex-row mb-1">
-        <div class="flex-grow-1 mr-1">
-          <b-input-group prepend="Search" v-if="filterable" >
-            <b-form-input
-              v-model="filter"
-              data-cy="table-text-filter"
-              type="search"
-              placeholder="Type to Filter"
-              @input="onFiltered"
-            ></b-form-input>
-          </b-input-group>
-        </div>
-        <b-input-group class="perPageSelect" prepend="Per page">
-          <b-form-select
-            v-model="_perPage"
-            data-cy="table-pagination-selector"
-            :options="pageOptions"
-            @change="onPerPageChanged"
-          ></b-form-select>
+  <b-container fluid class="d-flex flex-column">
+    <div class="d-flex flex-row mb-1">
+      <div class="flex-grow-1 mr-1">
+        <b-input-group prepend="Search" v-if="filterable" >
+          <b-form-input
+            v-model="filter"
+            data-cy="table-text-filter"
+            type="search"
+            placeholder="Type to Filter"
+            @input="onFiltered"
+          ></b-form-input>
         </b-input-group>
       </div>
-
-    <b-row>
-      <b-col cols="12">
-        <b-container class="overflow-auto p-0 m-0" fluid>
-          <b-table
-            :sticky-header="stickyHeader"
-            class="m-0 p-0"
-            data-cy="table"
-            v-bind="mergedOptions"
-            :items="items"
-            :fields="fields"
-            @sort-changed="onSortChanged"
-            @row-selected="onRowSelected"
-          >
-            <template
-              v-for="slotName of Object.keys($scopedSlots)"
-              v-slot:[slotName]="slotScope"
-            >
-              <slot :name="slotName" v-bind="slotScope"></slot>
-            </template>
-          </b-table>
-        </b-container>
-        <b-pagination
-          v-model="_currentPage"
-          :total-rows="totalRows"
-          align="fill"
-          size="sm"
-          class="mt-2 d-flex pull-right"
-          :per-page="_perPage"
-        ></b-pagination>
-      </b-col>
-    </b-row>
+      <b-input-group class="perPageSelect" prepend="Per page">
+        <b-form-select
+          v-model="_perPage"
+          data-cy="table-pagination-selector"
+          :options="pageOptions"
+          @change="onPerPageChanged"
+        ></b-form-select>
+      </b-input-group>
+    </div>
+    <!-- A note about the conditional .h-1 class. This is a veri ugli CSS ack.
+    In some cases, we want the table to take the full available height in the
+    parent, but setting stickyHeader: "100%" won't work because the implementation
+    of BootstrapVue wraps the table in a div with max-height: 100%, which will
+    fall back to max-height: none if the parent has not an explicit height (which
+    is the case for flexboxed parents). BY PURE CHANCE, we noticed that setting
+    whatever height on the flexboxed parent AND max-height: 100% on the wrapper,
+    makes the table behave exactly as wanted: keep the sticky header and fill
+    the availeble height. If anybody can explain this, I'll be interested (Luca). -->
+    <div class="flex-grow-1" :class="{'h-1': stickyHeader === '100%'}">
+      <b-table
+        :sticky-header="stickyHeader"
+        class="m-0 p-0"
+        data-cy="table"
+        v-bind="mergedOptions"
+        :items="items"
+        :fields="fields"
+        @sort-changed="onSortChanged"
+        @row-selected="onRowSelected"
+      >
+        <template
+          v-for="slotName of Object.keys($scopedSlots)"
+          v-slot:[slotName]="slotScope"
+        >
+          <slot :name="slotName" v-bind="slotScope"></slot>
+        </template>
+      </b-table>
+    </div>
+    <b-pagination
+      v-model="_currentPage"
+      :total-rows="totalRows"
+      size="sm"
+      class="mt-2"
+      :per-page="_perPage"
+    ></b-pagination>
+      
   </b-container>
 </template>
 
@@ -101,7 +105,6 @@ export default {
       default: () => {},
     },
     stickyHeader: {
-      type: Boolean,
       required: false,
       default: true
     }
@@ -158,4 +161,6 @@ export default {
 <style lang="sass" scoped>
 .perPageSelect
   width: 245px
+.h-1
+  height: 1px
 </style>
