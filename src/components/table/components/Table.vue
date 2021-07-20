@@ -1,4 +1,5 @@
 <template>
+
   <b-container fluid class="d-flex flex-column">
     <div class="d-flex flex-row mb-1">
       <div class="flex-grow-1 mr-1">
@@ -56,7 +57,7 @@
       class="mt-2"
       :per-page="_perPage"
     ></b-pagination>
-      
+
   </b-container>
 </template>
 
@@ -106,8 +107,8 @@ export default {
     },
     stickyHeader: {
       required: false,
-      default: true
-    }
+      default: true,
+    },
   },
   setup(props, { emit }) {
     let _currentPage = ref(props.currentPage);
