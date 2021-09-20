@@ -11,6 +11,8 @@
 
 <script>
 import Vue from 'vue';
+require("ace-builds");
+require("ace-builds/webpack-resolver");
 
 export default {
   name: 'JsonEditor',
