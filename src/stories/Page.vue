@@ -54,7 +54,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue-demi';
+import { ref } from 'vue';
 
 import './page.css';
 import MyHeader from './Header.vue';

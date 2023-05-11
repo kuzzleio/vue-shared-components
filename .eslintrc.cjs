@@ -3,8 +3,6 @@ const isProduction = process.env.NODE_ENV === 'production';
 const importOrderOptions = {
   groups: ['builtin', 'external', 'parent', 'sibling'],
   pathGroups: [
-    // TODO remove `vue-demi` after full migration in vue 3
-    { pattern: 'vue-demi', group: 'external', position: 'before' },
     { pattern: 'vue', group: 'external', position: 'before' },
     // ? Patterns should be sorting of more precise to more generic
     { pattern: '@/**/*.vue', group: 'sibling' },
