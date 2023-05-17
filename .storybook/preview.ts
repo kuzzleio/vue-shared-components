@@ -1,3 +1,4 @@
+import 'tailwindcss/tailwind.css';
 import type { Preview } from '@storybook/vue';
 
 const preview: Preview = {
