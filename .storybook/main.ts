@@ -7,15 +7,13 @@ const config: StorybookConfig = {
     '@storybook/addon-interactions',
     '@storybook/addon-a11y',
   ],
-  framework: {
-    name: '@storybook/vue-vite',
-    options: {},
-  },
+  framework: '@storybook/vue-vite',
   docs: {
     autodocs: 'tag',
   },
   core: {
     builder: '@storybook/builder-vite',
+    disableTelemetry: true,
   },
 };
 export default config;
