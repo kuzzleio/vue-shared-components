@@ -34,6 +34,7 @@ module.exports = {
   },
   extends: [
     'plugin:vue/vue3-recommended',
+    'plugin:tailwindcss/recommended',
     '@vue/standard',
     '@vue/eslint-config-standard-with-typescript',
     '@vue/prettier',

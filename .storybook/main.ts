@@ -10,6 +10,7 @@ const config: StorybookConfig = {
   framework: '@storybook/vue-vite',
   docs: {
     autodocs: 'tag',
+    defaultName: 'Documentation'
   },
   core: {
     builder: '@storybook/builder-vite',

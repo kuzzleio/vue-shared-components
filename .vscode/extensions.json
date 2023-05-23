@@ -7,7 +7,5 @@
     "EditorConfig.EditorConfig",
     "aaron-bond.better-comments",
     "bradlc.vscode-tailwindcss"
-    // TODO: Add the extension below when bootstrap & tailwind's prefix ('tw-') will be removed
-    // "heybourn.headwind"
   ]
 }
