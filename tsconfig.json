@@ -38,12 +38,12 @@
   },
   "include": [
     "./.eslintrc.cjs",
+    "./postcss.config.js",
     "./vite.config.ts",
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.vue",
     "src/tailwind.js"
   ],
-  "exclude": ["src/**/*.stories.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
