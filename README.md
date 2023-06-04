@@ -8,6 +8,40 @@ Use the following command to launch storybook
 npm run dev
 ```
 
+## Use VSC in your project
+
+<!-- TODO -->
+<!-- TODO -->
+<!-- TODO -->
+<!-- TODO -->
+
+### Vue 2.7
+
+Be aware that, while in vue 2.7 with Composition API, slots doesn't seem to be properly supported in storybook.
+In order to specify slot's content, you will need to specify a custom render function in the Meta:
+
+```ts
+render: (args) => ({
+    components: {
+      YourComponent,
+    },
+    setup() {
+      return { args };
+    },
+    template: `
+      <YourComponent v-bind="args">{{ args.default }}</YourComponent>
+    `,
+}),
+```
+
+However, sadly, in storybook vue 2, whenever you edit an argument, it won't re-render the component.
+
+We will have to wait for the vue3 migration.
+
+### Documentation
+
+Don't forget to document your components using [this guide](https://github.com/vue-styleguidist/vue-styleguidist/tree/dev/packages/vue-docgen-api#using-jsdoc-tags).
+
 ## Vue 3 + TypeScript + Vite
 
 This template should help get you started developing with Vue 2.7 and TypeScript in Vite. The template uses Vue 2.7 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
